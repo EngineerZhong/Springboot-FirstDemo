@@ -21,23 +21,23 @@ public class IndexController {
     public String index(Model model){
         model.addAttribute("name","大离弟弟咯");
 
-        return "index.jsp";
+        return "index";
     }
 
 
     @RequestMapping("/user/add")
     public String add(){
-        return "add.jsp";
+        return "user/add";
     }
 
     @RequestMapping("/user/update")
     public String update(){
-        return "update.jsp";
+        return "user/update";
     }
 
     @RequestMapping("/user/toLogin")
     public ModelAndView login(HttpServletRequest request, HttpServletResponse response){
-        ModelAndView model = new ModelAndView("login.jsp");
+        ModelAndView model = new ModelAndView("user/login");
         model.addObject("ctx", request.getServletContext().getContextPath());
         return model;
     }
@@ -59,10 +59,10 @@ public class IndexController {
         }catch (UnknownAccountException ex){
             // 登录失败，用户名不存在。
             model.addAttribute("msg","用户名不存在");
-            return "user/Login";
+            return "/user/Login";
         }catch (IncorrectCredentialsException ex2){
             model.addAttribute("msg","密码错误");
-            return "user/Login";
+            return "/user/Login";
         }
     }
 }

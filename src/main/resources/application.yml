@@ -15,7 +15,11 @@ spring:
       charset: UTF-8
       force: true
       enabled: true
-#mysql
+  thymeleaf:
+    mode: HTML5
+    suffix: .html
+    prefix: classpath:/templates/
+  #mysql
   datasource:
     url: jdbc:mysql://localhost:3306/dalididilo?useUnicode=true&characterEncoding=utf8
     username: root
