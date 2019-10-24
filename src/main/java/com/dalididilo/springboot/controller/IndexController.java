@@ -17,4 +17,19 @@ public class IndexController {
         return "index";
     }
 
+
+    @RequestMapping("/user/add")
+    public String add(){
+        return "user/add";
+    }
+
+    @RequestMapping("/user/update")
+    public String update(){
+        return "user/update";
+    }
+
+    @RequestMapping("/user/login")
+    public String login(){
+        return "user/login";
+    }
 }

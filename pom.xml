@@ -57,12 +57,13 @@
         </dependency>
 
 
-        <!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-core -->
+        <!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-spring -->
         <dependency>
             <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-core</artifactId>
+            <artifactId>shiro-spring</artifactId>
             <version>1.4.1</version>
         </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf -->
         <dependency>
