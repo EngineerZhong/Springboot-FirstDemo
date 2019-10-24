@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>用户登录页面</title>
+
+
 </head>
 <body>
     用户登录页面
+
+    </br>
+    <h4 style="color: red;" th:text="${msg}"></h4>
+    <form method="post" action=${ctx}"/user/Login">
+
+        用户名：<input id="name" type="text"><br>
+        密码:<input id="password" type="password"><br>
+        <input type="submit" value="登录">
+
+    </form>
 </body>
 </html>

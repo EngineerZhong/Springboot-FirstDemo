@@ -44,11 +44,12 @@ public class ShiroConfig {
 //        filterMap.put("/user/add","authc");
 //        filterMap.put("/user/update","authc");
         filterMap.put("/index","anon");
+        filterMap.put("/user/Login","anon");
         filterMap.put("/user/*","authc");
         filterFactoryBean.setFilterChainDefinitionMap(filterMap);
 
 //        修改跳转登录页面
-        filterFactoryBean.setLoginUrl("/user/login");
+        filterFactoryBean.setLoginUrl("/user/toLogin");
         return filterFactoryBean;
     }
 
