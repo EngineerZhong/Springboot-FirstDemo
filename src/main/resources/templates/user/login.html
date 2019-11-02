@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <title>用户登录页面</title>
 
+    <script>
+        var ctx = [[${ctx}]];
+        console.log(ctx);
+    </script>
 
 </head>
 <body>
     用户登录页面
-
+    <h3 th:text="${ctx}"></h3>
     </br>
     <h4 style="color: red;" th:text="${msg}"></h4>
     <form method="post" action= "Login">
