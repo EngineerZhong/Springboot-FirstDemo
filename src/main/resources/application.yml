@@ -19,6 +19,16 @@ spring:
     mode: HTML5
     suffix: .html
     prefix: classpath:/templates/
+
+# redis commandLine :
+# config set requirepass 123456
+# auth 123456
+# flushdb / flushall
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password: 123456
   #mysql
   datasource:
     url: jdbc:mysql://localhost:3306/dalididilo?useUnicode=true&characterEncoding=utf8

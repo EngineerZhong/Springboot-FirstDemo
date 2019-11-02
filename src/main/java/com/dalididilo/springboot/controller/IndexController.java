@@ -13,6 +13,8 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,10 +29,14 @@ import java.io.IOException;
 @Controller
 public class IndexController {
 
+    @Autowired
+    private RedisTemplate<String, Object> redisTemplate;
+
+
     @RequestMapping("/index")
     public String index(Model model){
         model.addAttribute("name","大离弟弟咯");
-
+        redisTemplate.opsForValue().set("name","大离弟弟咯。");
         return "index";
     }
 
