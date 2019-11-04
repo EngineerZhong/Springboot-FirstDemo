@@ -1,6 +1,6 @@
 package com.dalididilo.springboot;
 
-import com.dalididilo.springboot.index.controller.bean.ApplicationBean;
+import com.dalididilo.springboot.index.bean.ApplicationBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
