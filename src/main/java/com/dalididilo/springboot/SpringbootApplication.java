@@ -1,7 +1,6 @@
 package com.dalididilo.springboot;
 
-import com.dalididilo.springboot.bean.ApplicationBean;
-import com.dalididilo.springboot.mapper.EmpDao;
+import com.dalididilo.springboot.index.controller.bean.ApplicationBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -10,10 +9,9 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
 @SpringBootApplication
-@MapperScan("com.dalididilo.springboot.mapper")
+@MapperScan({"com.dalididilo.springboot.index.dao","com.dalididilo.springboot.module.*.dao"})
 @EnableConfigurationProperties({ApplicationBean.class})
 public class SpringbootApplication {
 
@@ -38,14 +36,15 @@ public class SpringbootApplication {
     @Autowired
     ApplicationBean bean;
 
-    @Autowired
-    private EmpDao empDao;
+//    @Autowired
+//    private EmpDao empDao;
 
 
     @RequestMapping(value = "/")
     public String hello(){
 //        return bean.getName() + " : " + bean.getHello();
-        return empDao.getEmpById(10001).toString();
+//        return empDao.getEmpById(10001).toString();
+        return "index";
     }
 
 

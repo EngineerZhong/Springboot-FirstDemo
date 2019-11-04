@@ -5,7 +5,7 @@
     <title>用户登录页面</title>
 
     <script>
-        var ctx = [[${ctx}]];
+        var ctx = '[[${ctx}]]';
         console.log(ctx);
     </script>
 
@@ -15,10 +15,10 @@
     <h3 th:text="${ctx}"></h3>
     </br>
     <h4 style="color: red;" th:text="${msg}"></h4>
-    <form method="post" action= "Login">
+    <form method="post" action= "../login/LoginProcess">
 
-        用户名：<input id="name" type="text"><br>
-        密码:<input id="password" type="password"><br>
+        用户名：<input id="name" name="name" type="text"><br>
+        密码:<input id="password" name="password" type="password"><br>
         <input type="submit" value="登录">
 
     </form>

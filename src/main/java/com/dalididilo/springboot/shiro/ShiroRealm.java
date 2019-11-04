@@ -1,14 +1,19 @@
 package com.dalididilo.springboot.shiro;
 
 
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
+import com.dalididilo.springboot.module.login.bean.User;
+import com.dalididilo.springboot.module.login.service.ILoginService;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class ShiroRealm extends AuthorizingRealm {
+
+
+    @Autowired
+    ILoginService loginService;
     /**
      * 授权逻辑
      * @param principalCollection
@@ -29,6 +34,15 @@ public class ShiroRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         System.out.println("认证逻辑");
-        return null;
+
+        UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
+
+        User user = loginService.findUserByName(token.getUsername());
+        if(user == null){
+            // 用户名不存在
+            return null;// shiro底层会抛出UnKnowAccountException
+        }
+
+        return new SimpleAuthenticationInfo("",user.getPassword(),"");
     }
 }

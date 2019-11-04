@@ -73,10 +73,10 @@ spring:
 
 
 
-# Mybatis mapper.xml 文件路径
+# Mybatis dao.xml 文件路径
 mybatis:
-  mapper-locations: classpath:mapping/*Mapper.xml
-  type-aliases-package: com.dalididilo.springboot.bean
+  mapper-locations: classpath:mapping/*/*Mapper.xml
+  type-aliases-package: com.dalididilo.springboot.*
 
 # Logging日志输出配置包名DEBUG
 logging:

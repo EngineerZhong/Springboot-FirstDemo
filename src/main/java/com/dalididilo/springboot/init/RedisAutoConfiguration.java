@@ -29,10 +29,6 @@ public class RedisAutoConfiguration extends CachingConfigurerSupport {
 //      Key 使用StringRedisSerializer
         template.setKeySerializer(new StringRedisSerializer());
         template.setHashKeySerializer(new StringRedisSerializer());
-
-
         return template;
     }
-
-
 }

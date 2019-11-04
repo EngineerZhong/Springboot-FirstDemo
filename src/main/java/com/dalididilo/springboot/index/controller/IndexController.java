@@ -1,13 +1,8 @@
-package com.dalididilo.springboot.controller;
+package com.dalididilo.springboot.index.controller;
 
 
-import com.alibaba.druid.support.json.JSONParser;
-import com.alibaba.druid.support.json.JSONUtils;
-import com.alibaba.fastjson.JSON;
-import com.dalididilo.springboot.bean.ControlDevice;
-import com.dalididilo.springboot.bean.ControlDeviceResult;
-import com.dalididilo.springboot.bean.Result;
-import com.dalididilo.springboot.utils.HttpTool;
+import com.dalididilo.springboot.index.controller.bean.ControlDevice;
+import com.dalididilo.springboot.index.service.IndexService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -20,23 +15,26 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 @Controller
 public class IndexController {
 
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
-
+    @Autowired
+    IndexService indexService;
 
     @RequestMapping("/index")
     public String index(Model model){
-        model.addAttribute("name","大离弟弟咯");
-        redisTemplate.opsForValue().set("name","大离弟弟咯。");
+        model.addAttribute("name",indexService.getEmpById(10001));
+//        redisTemplate.opsForValue().set("name","大离弟弟咯。");
+//        Map<String,String> options = new HashMap<>();
+//        options.put("01","大离");
+//        options.put("02","弟弟咯");
+//        redisTemplate.opsForValue().set("map",options);
+
         return "index";
     }
 
@@ -95,27 +93,16 @@ public class IndexController {
     }
 
 
-    @RequestMapping("/user/Login")
-    public String Login(String name,String password,Model model){
-        /**
-         * 编写Shiro的逻辑认证
-         */
-
-//        1、获取Subject
-        Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(name,password);
-
-        try {
-            subject.login(token);
-            // 不报错 说明登录成功了
-            return "redirect:index";
-        }catch (UnknownAccountException ex){
-            // 登录失败，用户名不存在。
-            model.addAttribute("msg","用户名不存在");
-            return "/user/Login";
-        }catch (IncorrectCredentialsException ex2){
-            model.addAttribute("msg","密码错误");
-            return "/user/Login";
-        }
-    }
+//    @RequestMapping("/user/Login")
+//    public String Login(String name,String password,Model model){
+//        /**
+//         * 编写Shiro的逻辑认证
+//         */
+//
+////        1、获取Subject
+//        Subject subject = SecurityUtils.getSubject();
+//        UsernamePasswordToken token = new UsernamePasswordToken(name,password);
+//
+//        return getString(model, subject, token);
+//    }
 }
